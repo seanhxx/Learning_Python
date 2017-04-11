@@ -1,0 +1,67 @@
+{% extends "base.html"%}
+{% load static %}
+{% block website_title %}Query Result{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{% static 'tools/result.css' %}" />
+{% endblock %}
+
+{% block body_header %}
+<div  id="div_header" class="container-fluid">
+	<div style="margin-top:2%;" class="row">
+		<div class="col-md-12">
+			<h1 style = " font-size:3.5em;" class="text-center text-primary">
+					Analysis Tool
+				<h2 style="font-size:1.2em;" class="text-center">
+					<b>Note:</b> Executing asynchronous task currently. <b>Don't</b> submit again if running correctly!
+				</h2>
+			</h1>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block body_content %}
+<div id="query_info">
+
+    <b>Job ID: </b><p class="inline" id="job_id" ></p> &emsp;
+    <b>Start Date: </b><p class="inline" id="start_date" ></p> &emsp;
+    <b>End Date: </b><p class="inline" id="end_date" ></p> &emsp;
+    <b>Uploaded CSV: </b><p class="inline" id="upload_file" ></p>
+
+</div>
+
+<div id="frm">
+    <form method="get" action="{% url 'download_rf' job_id %}">
+    <button id="btn_download1" type="submit">
+    Download Randomforest Result
+    </button>
+    </form>
+    <form method="get" action="{% url 'download_k' job_id %}">
+    <button id="btn_download2" type="submit">
+    Download Kruskalwallis Result
+    </button>
+    </form>
+</div>
+
+<div id="myProgress">
+  <div id="myBar">1%</div>
+</div>
+
+<div id="result"></div>
+
+{% endblock %}
+
+{% block javascript %}
+<script type="text/javascript">
+    var Dict = {{dict|safe}};
+    var jobID = "{{job_id}}";
+    document.getElementById("job_id").innerHTML = Dict['job_id'];
+    document.getElementById("start_date").innerHTML = Dict['start_date'];
+    document.getElementById("end_date").innerHTML = Dict['end_date'];
+    document.getElementById("upload_file").innerHTML = Dict['upload_file'];
+    document.getElementById("btn_download1").disabled = true;
+    document.getElementById("btn_download2").disabled = true;
+</script>
+<script type="text/javascript" src="{% static 'tools/result.js' %}"></script>
+{% endblock %}
