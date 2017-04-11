@@ -1,1 +1,1 @@
-learning django framework
+learning python modules
