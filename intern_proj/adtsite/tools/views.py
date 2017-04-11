@@ -11,18 +11,13 @@ from tools.module.job_exerciser import JobExerciser
 import tools.module.applet as myfunc
 import json
 
-host = "fslhdppclient02"
+host = ""
 port = 22
 
 # Server User ID
-username = "xiaoxiang"
-password = "Seanhu42"
-serverpath_root = '/home/xiaoxiang/test/'
-
-# username = "hdfsbe"
-# password = "1BEIngest"
-# serverpath_root = "/home/hdfsbe/auto-diagnostics/AD_custom_pyscript/"
-
+username = ""
+password = ""
+serverpath_root = ''
 
 def index(request):
     if request.method == "POST":
