@@ -1,0 +1,21 @@
+create external table if not exists eng_mti_ww_be_msb_assembly_quality.twodid (
+site string,
+design_id string,
+slash_lot_id string,
+strip_id string,
+2did string,
+fuseid string,
+step string,
+machine_id string,
+process_datetime timestamp,
+strip_datetime timestamp,
+comp_datetime timestamp
+)
+
+STORED AS PARQUET
+
+LOCATION '/eng/mti/ww/be/msb/assembly_quality/twodid'; 
+
+drop table if exists eng_mti_ww_be_msb_assembly_quality.twodid;
+
+hadoop fs -rm -r /eng/mti/ww/be/msb/assembly_quality/twodid/*
