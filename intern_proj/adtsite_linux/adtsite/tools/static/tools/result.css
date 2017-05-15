@@ -1,0 +1,69 @@
+#query_info {
+    padding: 2px 5px 2px;
+    margin-top: 5px;
+}
+
+p.inline{
+display:inline;
+}
+
+#result {
+    background-color: #8fe072;
+    margin: auto;
+    margin-top: 5px;
+    border: 2px solid black;
+    width: 100%;
+    height: 500px;
+    padding: 10px;
+    overflow-y: scroll;
+    overflow-x:hidden;
+}
+
+#myProgress {
+    width: 100%;
+    background-color: #ddd;
+    margin: auto;
+    margin-top: 5px;
+}
+
+#myBar {
+    width: 1%;
+    height: 30px;
+    background-color: #4CAF50;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+}
+
+#div_header {
+border:5px;
+background-color:#efefed;
+height:200px;
+line-height:200px;
+}
+
+#frm *{
+display:inline;
+padding: 2px 5px 2px;
+}
+
+button {
+  border: 1px solid #0066cc;
+  background-color: #0099cc;
+  color: #ffffff;
+  padding: 5px 10px;
+}
+
+button:hover {
+  border: 1px solid #0099cc;
+  background-color: #00aacc;
+  color: #ffffff;
+  padding: 5px 10px;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #cccccc;
+  color: #666666;
+}

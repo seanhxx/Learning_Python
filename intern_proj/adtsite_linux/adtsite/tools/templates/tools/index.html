@@ -1,0 +1,94 @@
+{% extends "base.html"%}
+{% load static %}
+{% block website_title %}Assembly ADT{% endblock %}
+
+{% block stylesheet %}
+<link rel="stylesheet" type="text/css" href="{% static 'tools/index.css' %}"/>
+{% endblock %}
+
+{% block body_header %}
+<div  id="div_header" class="container-fluid">
+	<div style="margin-top:2%;" class="row">
+		<div class="col-md-12">
+			<h1 style = " font-size:3.5em;" class="text-center text-primary">
+					Assembly Auto Diagnostic Tool
+				<h2 style="font-size:1.2em;" class="text-center">
+					<b>Prototype</b>
+				</h2>
+			</h1>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block body_content %}
+<div style="margin-top:2%;" class="container-fluid">
+	<div class="row">
+		<div class="col-md-12">
+			<form action="{% url 'index' %}" method="post" role="form" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ form.non_field_errors }}
+                                <div class="form-group" id="frm_chk_box">
+					<label for="{{ form.is_checked.id_for_label }}">
+						To input lot id manually, please check the box: {{ form.is_checked }}
+					</label>
+				</div>
+				<div class="form-group" id="frm_lot_input">
+					{{ form.lot_ID.errors }}
+					<label for="{{ form.lot_ID.id_for_label }}">
+						Input Lot ID:
+					</label>
+					{{ form.lot_ID }}
+				</div>
+				<div class="form-group" id="frm_file_input">
+					{{ form.upload_file.errors }}
+					<label for="{{ form.upload_file.id_for_label }}">
+						Choose File(.csv):
+					</label>
+					{{ form.upload_file }}
+				</div>
+                <button id="btn_show_sample" type="button"><div>Show Sample</div></button>
+                <img id="image-holder" alt="img_sample_csv"/>
+				<div style="margin-bottom:15px; margin-top:15px;"><b>Analysis Period:</b></div>
+				<div class="form-group">
+					{{ form.start_date.errors }}
+					<label for="{{ form.start_date.id_for_label }}">
+						Choose Start Date:
+					</label>
+					{{ form.start_date }}
+				</div>
+				<div class="form-group">
+					{{ form.end_date.errors }}
+					<label for="{{ form.end_date.id_for_label }}">
+						Choose End Date:
+					</label>
+					{{ form.end_date }}
+				</div>
+
+				<button id="btn_submit" type="submit" class="btn btn-primary">
+					Submit
+				</button>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+    var btn_showSample = document.getElementById('btn_show_sample');
+    var img = document.getElementById('image-holder');
+    var chk_box = document.getElementById('id_is_checked');
+    var frm_chk_box = document.getElementById('frm_chk_box');
+    var lot_input = document.getElementById('frm_lot_input');
+    var file_input = document.getElementById('frm_file_input');
+    frm_chk_box.style.display = "none";
+    lot_input.style.display = "none";
+    chk_box.checked = false;
+    document.getElementById("id_lot_ID").required = false;
+    document.getElementById("id_upload_file").required = true;
+    img.src = "{% static 'tools/sampleCSV.PNG' %}";
+    img.style.display = 'none';
+</script>
+<script type="text/javascript" src="{% static 'tools/index.js' %}"></script>
+{% endblock %}

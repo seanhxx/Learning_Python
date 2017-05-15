@@ -1,0 +1,31 @@
+#div_header {
+border:5px;
+background-color:#efefed;
+height:200px;
+line-height:200px;
+}
+
+#btn_submit {
+border:5px;
+background-color:#146cba;
+height:35px;
+width:100px;
+}
+
+#btn_submit:hover {
+border:5px;
+background-color:#3988ce;
+height:35px;
+width:100px;
+}
+
+#btn_show_sample {
+height:23px;
+width:92px;
+white-space: nowrap;
+font-size: 85%;
+}
+
+#image-holder {
+  display: none;
+}
